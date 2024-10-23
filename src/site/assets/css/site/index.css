@@ -1,0 +1,31 @@
+#cards {
+	display: grid;
+	width: 100vw;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	justify-items: center;
+	box-sizing: border-box;
+	/* gap: 200px; */
+	gap: 50px;
+	margin: 100px;
+}
+
+.card {
+	display: inline-grid;
+	width: 250px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+	/* background-color: rgba(0, 0, 0, 0.075); */
+	padding: 0px 0px 30px 0px;
+	text-align: center;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+}
+
+.card .imgs {
+	display: inline;
+	transform: translateY(-30%);
+}
+
+.card img {
+	width: 50px;
+	padding: 10px;
+}
