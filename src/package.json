@@ -2,13 +2,15 @@
   "name": "hedge",
   "version": "0.1.0",
   "description": "Hedge your bets in your favorite sport.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Abdulaziz AlOwain",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "express": "^4.21.1"
-  }
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0"
+  },
+	"type":"module"
 }

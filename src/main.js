@@ -1,26 +1,34 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+'use strict'
 
-const express = require('express')
-const app = express()
+import express from 'express';
+const app = express();
 const port = 3000
 
-app.use('/assets', express.static('site/assets'));
-app.use(express.static('site/html'));
+import { DatabaseManager } from './db.js';
+let db = null;
 
-app.get('/cards', (req, res) => {
-	const data = [
+app.use('/assets', express.static('site/assets'));
+app.use(express.static('site/index/'));
+app.use(express.static('site/'));
+
+app.get('/cards', async (req, res) => {
+	const cards = await db.get_cards();
+
+	let data = [];
+	for (const card of cards) {
+		let participants = []
 		{
-			id: 1,
-			participants: [
-				{ id: 1, name: 'Team A' },
-				{ id: 2, name: 'Team B' }
-			],
-			time: 1728828121,
-			game_type: 'soccer'
+			const participants_temp = []
+			for (let participant of card.participants) {
+				participants_temp.push(db.get_participant(participant.id));
+			}
+			participants = await Promise.all(participants_temp);
 		}
-	]
+		console.log(participants[1]);
+		data.push({participants: participants, time: 1728828121, game_type: 'soccer'});
+	}
+
+	console.log(data, data[0].participants);
 	res.json(data);
 })
 
@@ -29,7 +37,7 @@ app.get('*', (req, res) => {
 	res.end('404: Failed to find page.');
 })
 
-
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`)
+	db = new DatabaseManager();
 })
