@@ -12,7 +12,7 @@ export class DatabaseManager {
 
 	async get_cards() {
 		try {
-			return this.db.collection("cards").find().toArray();
+			return await this.db.collection("cards").find().toArray();
 		}
 		catch(error) {
 			console.log(`Database Error: ${error}`)
@@ -21,11 +21,23 @@ export class DatabaseManager {
 
 	async get_participant(id) {
 		try {
-			return this.db.collection("teams").findOne({_id: id});
+			return this.db.collection("participants").findOne({_id: id});
 		}
 		catch(error) {
 			console.log(`Database Error: ${error}`)
 		}
 	}
-}
+	
+	async get_user(username) {
+		return await this.db.collection('users').findOne({username});
+	}
 
+	async create_user(username, password) {
+		const user_exists = await this.get_user(username);
+		if (user_exists == null) {
+			await this.db.collection('users').insertOne({username, password});
+			return true;
+		}
+		return false;
+	}
+}

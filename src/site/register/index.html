@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<title>Hedge</title>
-	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+	<link rel='icon' type='image/x-icon' href='/assets/favicon.ico'>
 
-	<link rel="preload" href="register.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" href="/assets/css/common.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel='preload' href='register.css' as='style' onload='this.onload=null;this.rel="stylesheet"'>
+	<link rel='preload' href='/assets/css/common.css' as='style' onload='this.onload=null;this.rel="stylesheet"'>
+
+	<script>
+		if (window.localStorage.getItem('username') != null) {
+			window.location.replace('/');
+		}
+	</script>
+	<script src='register.js' charset='utf-8' defer></script>
 </head>
 <body>
 
-<header class="grey-bttm-border">
-	<a href="/" id="logo">
-		<img src="/assets/img/hedge.png" alt="Hedge Logo">
-		<div id="logo-title"> Hedge </div>
+<header class='grey-bttm-border'>
+	<a href='/' id='logo'>
+		<img src='/assets/img/hedge.png' alt='Hedge Logo'>
+		<div id='logo-title'> Hedge </div>
 	</a>
 	<ul>
-		<li><a href="#">Leaderboard</a></li> <li><a href="#">About Us</a></li> <li><a href="/sign-in">Sign In</a></li>
+		<li><a href='#'>Leaderboard</a></li> <li><a href='/about-us'>About Us</a></li> <li><a href='/sign-in'>Sign In</a></li>
 	</ul>
 </header>
 
 <main>
-	<form class="grey-border grey-shadow" action="" method="post">
-		<div id="form-elements">
+	<form id='register-form' class='grey-border grey-shadow'>
+		<div id='form-elements'>
 			<h1>Register</h1>
-			<div class="container">
-				<label for="email-inp">Email</label>
-				<input class="grey-border grey-shadow" type="email" placeholder="Enter your email" required>
+			<div class='container'>
+				<label for='username'>Username</label>
+				<input id='username' class='grey-border grey-shadow' type='text' placeholder='Enter your username' required>
 			</div>
-			<div class="container">
-				<label for="password-inp">Password</label>
-				<input class="grey-border grey-shadow" type="password" placeholder="Enter your password" required>
+			<div class='container'>
+				<label for='password'>Password</label>
+				<input id='password' class='grey-border grey-shadow' type='password' placeholder='Enter your password' required>
 			</div>
-			<div class="container">
-				<input class="grey-border grey-shadow" type="submit" value="Register">
+			<div class='container'>
+				<input class='grey-border grey-shadow' type='submit' value='Register'>
 			</div>
+			<div id='err' class='container'></div>
 		</div>
 	</form>
 </main>
