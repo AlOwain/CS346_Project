@@ -24,11 +24,9 @@ app.get('/cards', async (req, res) => {
 			}
 			participants = await Promise.all(participants_temp);
 		}
-		console.log(participants[1]);
 		data.push({participants: participants, time: 1728828121, game_type: 'soccer'});
 	}
 
-	console.log(data, data[0].participants);
 	res.json(data);
 })
 

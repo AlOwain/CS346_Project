@@ -1,0 +1,12 @@
+main {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 20px;
+	width: min(50%, 700px);
+}
+
+main p {
+	text-align: justify;
+	text-indent: 40px;
+}

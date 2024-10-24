@@ -13,7 +13,7 @@ class Card {
 	build_card() {
 		let card = '';
 		if (this.game_type = "soccer") {
-			card += '<div class="card">';
+			card += '<div class="card grey-border">';
 					card += '<div class="imgs grey-bttm-border">'
 					card += `<img src="/assets/img/thumbnails/${this.participants[0]._id}.png" alt="${this.participants[0].name}">`
 					card += `<img src="/assets/img/thumbnails/${this.participants[1]._id}.png" alt="${this.participants[1].name}">`
